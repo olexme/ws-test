@@ -4,21 +4,13 @@ import { NgModule } from '@angular/core';
 
 /* App Root */
 import { AppComponent } from './app.component';
-
-/* Feature Modules */
-import { ContactModule } from './contact/contact.module';
-import { GreetingModule } from './greeting/greeting.module';
 import {SocketModule} from './socket/socket.module';
-/* Routing Module */
-import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
-    ContactModule,
-    GreetingModule.forRoot({userName: 'Miss Marple'}),
-    SocketModule.forRoot({my_url: 'wss://echo.websocket.org/'}),
-    AppRoutingModule
+    SocketModule.forRoot({my_url: 'wss://socket-io-chat.now.sh/'}),
   ],
   declarations: [
     AppComponent

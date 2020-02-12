@@ -3,13 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-greeting></app-greeting>
-    <nav>
-      <a routerLink="contact" routerLinkActive="active">Contact</a>
-      <a routerLink="items" routerLinkActive="active">Items</a>
-      <a routerLink="customers" routerLinkActive="active">Customers</a>
-    </nav>
-    <router-outlet></router-outlet>
+    <h1>WebSocket test</h1>
+    <app-socket-test></app-socket-test>
   `
 })
 export class AppComponent {

@@ -4,28 +4,26 @@ import { SocketService } from './socket.service';
 
 @Component({
   selector: 'app-socket-test',
-  styles:[`
-  :host {
-    border: 1px solid red;
-    display: flex:
-    flex-direction: column;
-  }
-  `],
-  template: `<input #myInput value="test message" >
-<button (click)="sendEchoMessage(myInput.value)">send WS Echo Message</button>
-<p>{{output}}</p>
+  styleUrls: ['./socket.component.css'],
+  template: `
+  <p>Joined : https://socket.io/demos/chat/</p>
+  <p>My User Name: {{userName}}</p>
+  <input #myInput value="test message" >
+<button (click)="sendEchoMessage(myInput.value)">send Message</button>
+<textarea cols="10" rows="40">{{output}}</textarea>
 `
 })
 export class SocketComponent {
   output = '';
+  userName = 'aaa' + Date.now();
   constructor(private socketService: SocketService) {
-    // this.socketService.on("message", (data: string) => {
-    //     this.output += '<br>got message' + data;
-    // });
+    console.log('socketService', socketService);
+    this.socketService.connect();
+    this.socketService.emit("add user", this.userName);
   }
 
   sendEchoMessage(msg: string) {
-    // this.output += '<br>sending message' + msg;
-    // this.socketService.emit("message", msg);
+    this.socketService.emit("new message", msg);
+    this.output += '\nsending message: ' + msg;
   }
 }

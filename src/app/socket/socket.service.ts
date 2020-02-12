@@ -1,18 +1,13 @@
- import { Optional, Injectable, NgModule } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-
-export type SocketConfig = {
-  my_url: string
-}
+import { SocketConfigService } from './socketConfigService';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SocketService extends Socket {
 
-    constructor(@Optional() config?: SocketConfig) {
-        super({ url: config ? config.my_url : 'http://badurl.io', options: {} });
+    constructor(conf: SocketConfigService) {
+        super({ url: conf.config ? conf.config.my_url : 'http://badurl.io', options: {} });
     }
 
 }
