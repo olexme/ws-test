@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { SocketService } from './socket.service';
 
 @Component({
@@ -17,7 +17,6 @@ export class SocketComponent {
   output = '';
   userName = 'aaa' + Date.now();
   constructor(private socketService: SocketService) {
-    console.log('socketService', socketService);
     this.socketService.connect();
     this.socketService.emit("add user", this.userName);
   }
